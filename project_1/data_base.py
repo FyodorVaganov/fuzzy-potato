@@ -18,8 +18,6 @@ games_table = meta_data.tables['games']
 def get_today_date():
     today_date = datetime.today().timetuple()
     today_date = today_date[0:3]
-    # today_date = str(today_date[0]) + "-" + \
-    #    str(today_date[1]) + "-" + str(today_date[2])
     return(today_date)
 
 
@@ -29,8 +27,6 @@ def extract_last_date():
     extract = r.first()
     last_game_date = extract[5].timetuple()
     last_game_date = last_game_date[0:3]
-    # last_game_date = str(last_game_date[0]) + "-" + \
-    #    str(last_game_date[1]) + "-" + str(last_game_date[2])
     return(last_game_date)
 
 
@@ -48,10 +44,8 @@ def date_iteration():
     month_31_days = [1, 3, 5, 7, 8, 10, 12]
     month_30_days = [4, 6, 9, 11]
     month_feb = 2
-    i = 0
     while date_day != last_game_day or date_month != last_game_month or date_year != last_game_year:
         date_day -= 1
-        i += 1
         if date_day == 0:
             date_month -= 1
             if date_month in month_30_days:
