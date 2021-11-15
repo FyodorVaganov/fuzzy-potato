@@ -5,7 +5,7 @@ import main
 
 
 engine = create_engine(
-    "postgresql+psycopg2://postgres:qwer123@localhost:5432/gms_n_tms")
+    "postgresql+psycopg2://postgres:qwer123@localhost:5432/games")
 conn = engine.connect()
 
 print(engine, "done")
@@ -62,14 +62,12 @@ def date_iteration():
                 date_day = 31
                 date_year -= 1
         if date_day < 10 and date_month < 10:
-            date_list.append(str(date_year) + "-" + "0" +
-                             str(date_month) + "-" + "0" + str(date_day))
+            date_list.append(str(date_year) + "-" + str(date_month).zfill(2) + "-" + str(date_day).zfill(2))
         elif date_month < 10:
-            date_list.append(str(date_year) + "-" + "0" +
-                             str(date_month) + "-" + str(date_day))
+            date_list.append(str(date_year) + "-" + str(date_month).zfill(2) + "-" + str(date_day))
         elif date_day < 10 and i != 1:
             date_list.append(str(date_year) + "-" +
-                             str(date_month) + "-" + "0" + str(date_day))
+                             str(date_month) + "-" +str(date_day).zfill(2))
         if date_day >= 10 and date_month >= 10:
             date_list.append(str(date_year) + "-" +
                              str(date_month) + "-" + str(date_day))
